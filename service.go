@@ -48,7 +48,6 @@ func newService() (*myservice, error) {
 		return nil, err
 	}
 
-	elog.Info(1, fmt.Sprintf("Should we start here?"))
 	m.InletsClientConfig = c
 
 	upstreams := "--upstream=" + strings.TrimRight(strings.Join(m.Upstreams, ","), ",")
@@ -62,7 +61,7 @@ func newService() (*myservice, error) {
 		"--auto-tls=" + strconv.FormatBool(m.AutoTLS),
 	}
 
-	elog.Info(1, fmt.Sprintf("inlets-pro %v", args))
+	elog.Info(1, fmt.Sprintf("Starting: inlets-pro %v", strings.Replace(strings.Join(args, " "), m.Token, "REDACTED", 1)))
 	cmd := exec.Command("inlets-pro", args...)
 
 	m.Process = cmd
@@ -72,7 +71,7 @@ func newService() (*myservice, error) {
 		elog.Error(1, fmt.Sprintf("Error starting app %s", err.Error()))
 	}
 
-	elog.Info(1, fmt.Sprintf("PID %d", cmd.Process.Pid))
+	elog.Info(1, fmt.Sprintf("inlets-client PID %d", cmd.Process.Pid))
 	return m, nil
 }
 
