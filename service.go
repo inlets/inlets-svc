@@ -87,8 +87,8 @@ loop:
 	for {
 		select {
 		case <-tick:
-			beep()
-			elog.Info(1, fmt.Sprintf("beep, %v", m))
+			//beep()
+		//	elog.Info(1, fmt.Sprintf("beep, %v", m))
 		case c := <-r:
 			switch c.Cmd {
 
