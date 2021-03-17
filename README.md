@@ -17,7 +17,7 @@ Windows Services also allow for restarting of the tunnel process and logging.
  "url": "wss://alex-tunnel.exit.o6s.io",
  "license-file": "C:\\license.txt",
  "token": "TOKEN-HERE",
- "auto-tls": false,
+ "auto-tls": false
 }
 ```
 
